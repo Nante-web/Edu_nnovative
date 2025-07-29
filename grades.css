@@ -20,7 +20,7 @@ body {
     border-radius: 8px;
     max-width: 400px;
     width: 100%; 
-    background-color: grey;
+    background-color: white;
 }
 label {
     display: block;
@@ -40,7 +40,7 @@ h1 {
     text-align: center;
 }
 button {
-    margin-left: 180px;
+    margin-left: 170px;
 }
 button:hover {
     background-color: aquamarine;
