@@ -1,0 +1,71 @@
+<!-- portal.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Student Portal</title>
+<link rel="stylesheet" href="portal.css" />
+<style>
+body {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    height: 100vh;         
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+.portal-container {
+    text-align: center;
+    padding: 20px;
+    border: 2px;
+    border-radius: 10px;
+    background-color: grey;
+    
+}
+.port {
+    background-color: white;
+    color: black;
+    margin-right: 30px;
+
+}
+.port:hover {
+    padding: 10px;
+    background-color: aquamarine;
+}
+button:hover {
+    background-color: aquamarine;
+}
+
+</style>
+</head>
+<body>
+    <button class="port" onclick="location.href='home.html'">H <br>
+            o <br>
+            m <br>
+            e <br></button>
+
+    <div class="portal-container">
+       <h2>Enter Your LRN to View Grades</h2>
+         <input type="text" id="lrnInput" placeholder="Enter your LRN" /><br>
+            <button onclick="showGrades()">View Grade</button>
+    </div>
+    <div id="resultDisplay" style="margin-top:20px; font-weight:bold;"></div>
+
+<script>
+function showGrades() {
+    const lrn = document.getElementById('lrnInput').value.trim(); // get LRN input
+    if (!lrn) {
+        alert("Please enter your LRN."); // ask for LRN if empty
+        return;
+    }
+    // Save the LRN in browser storage
+    localStorage.setItem('currentLRN', lrn);
+    // Redirect to result.html
+    window.location.href = 'result.html';
+}
+
+    </script>
+</body>
+</html>

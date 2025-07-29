@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sign In</title>
+<link rel="stylesheet" href="homepage.css" />
+</head>
+<body>
+<div class="overlay">
+    <div class="signin-container">
+        <h1>Sign in</h1>
+        <form id="signupForm">
+            <label for="Name">Name: </label><br>
+            <input type="text" id="Name" name="Name" placeholder="Enter your Name" required /><br><br>
+
+            <label for="mylevel">Grade level: </label><br>
+            <input type="text" id="mylevel" name="Grade Level" placeholder="Enter your Grade level" required /><br><br>
+
+            <label for="mylrn">LRN No: </label><br>
+            <input type="text" id="mylrn" name="LRN" placeholder="Enter your LRN No." required /><br><br>
+
+            <button type="submit" id="isubmit">Submit</button>
+        </form>
+    </div>
+</div>
+<script>
+   document.getElementById('signupForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+      const name = document.getElementById('Name').value.trim();
+      const level = document.getElementById('mylevel').value.trim();
+     const LRN = document.getElementById('mylrn').value.trim();
+
+    if (!name || !level || !LRN) {
+        alert('Please fill in all required fields.');
+        return;
+    }
+
+    const userData = { name, level, LRN };
+    localStorage.setItem('userData', JSON.stringify(userData));
+
+    // Redirect to profile/home page
+    window.location.href = 'home.html';
+});
+</script>
+</body>
+</html>

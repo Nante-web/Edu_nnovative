@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Input Grades</title>
+<link rel="stylesheet" href="grades.css" />
+
+<style>
+.back:hover {
+   background-color: aquamarine;
+   padding: 8px;
+}
+</style>
+
+<script>
+   window.onload = function() {
+     const correctPasskey = "mypassword123"; // Set your passkey here
+     const userPasskey = prompt("Enter the passkey to access this page:");
+         if (userPasskey !== correctPasskey) {
+          alert("Incorrect passkey. Access denied.");
+         window.location.href = "home.html"; // Change as needed
+    
+    } else {
+    }
+};
+
+     function calculateAndRedirect() {
+         var num1 = parseFloat(document.getElementById('myegrade').value);
+         var num2 = parseFloat(document.getElementById('myfgrade').value);
+         var num3 = parseFloat(document.getElementById('mysgrade').value);
+         var num4 = parseFloat(document.getElementById('myagrade').value);
+         var num5 = parseFloat(document.getElementById('mymgrade').value);
+         var num6 = parseFloat(document.getElementById('myesgrade').value);
+         var num7 = parseFloat(document.getElementById('mymagrade').value);
+         var num8 = parseFloat(document.getElementById('mytgrade').value);
+        var lrn = document.getElementById('studentLRN').value.trim();
+
+         if (!lrn) {
+          alert("Please enter the student's LRN.");
+          return;
+    }
+
+         if (
+          isNaN(num1) || isNaN(num2) || isNaN(num3) || isNaN(num4) ||
+          isNaN(num5) || isNaN(num6) || isNaN(num7) || isNaN(num8)
+    ) {
+          alert("Please fill in all grades with valid numbers.");
+           return;
+    }
+
+    const gradesData = {
+         english: num1,
+         filipino: num2,
+         science: num3,
+         arpa: num4,
+         mapeh: num5,
+         esp: num6,
+         math: num7,
+         tle: num8
+    };
+    
+    localStorage.setItem(`grades_${lrn}`, JSON.stringify(gradesData));
+     alert("Grades submitted successfully");
+}
+</script>
+</head>
+<body>
+<div class="bigay">
+    <div class="bigay-container">
+        <button class="back" onclick="location.href='home.html'">Home</button>
+        <h1>Input Grade</h1>
+        <form id="myform" onsubmit="event.preventDefault(); calculateAndRedirect();">
+             <label>English</label>
+              <input type="text" id="myegrade" name="EGrades" placeholder="Input Grade" required /><br>
+              <label>Filipino</label>
+              <input type="text" id="myfgrade" name="FGrades" placeholder="Input Grade" required /><br>
+              <label>Science</label>
+              <input type="text" id="mysgrade" name="SGrades" placeholder="Input Grade" required /><br>
+              <label>Arpa</label>
+              <input type="text" id="myagrade" name="AGrades" placeholder="Input Grade" required /><br>
+              <label>Mapeh</label>
+              <input type="text" id="mymgrade" name="MGrades" placeholder="Input Grade" required /><br>
+              <label>ESP</label>
+              <input type="text" id="myesgrade" name="ESGrades" placeholder="Input Grade" required /><br>
+             <label>Mathematics</label>
+             <input type="text" id="mymagrade" name="MAGrades" placeholder="Input Grade" required /><br>
+             <label>TLE</label>
+             <input type="text" id="mytgrade" name="TGrades" placeholder="Input Grade" required /><br><br>
+             <label>Student LRN</label>
+             <input type="text" id="studentLRN" placeholder="Enter Student LRN" required /><br><br>
+                 <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

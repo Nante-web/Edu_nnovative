@@ -1,0 +1,67 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>User Profile</title>
+<link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+    <header>
+        <button onclick=location.href="home.html">H <br>
+                                                   o <br>
+                                                   m <br>
+                                                   e</a></button>
+    </header>
+
+  <div class="profile-container">
+   <img id="profilePic" src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-pic" /><br /><br>
+     <label for="fileUpload" class="upload-btn">Choose Profile Picture</label><br>
+       <input type="file" id="fileUpload" accept="image/*" /><br>
+
+<script>
+
+     const fileInput = document.getElementById('fileUpload');
+     const profilePic = document.getElementById('profilePic');
+
+    fileInput.addEventListener('change', function() {
+     const file = this.files[0];
+       if (file) {
+     const reader = new FileReader();
+
+      reader.onload = function(e) {
+        profilePic.src = e.target.result;
+      }
+
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
+
+
+<div id="profile"></div>
+
+<script>
+window.onload = function() {
+    const data = localStorage.getItem('userData');
+    if (data) {
+        const user = JSON.parse(data);
+        document.getElementById('profile').innerHTML = `
+            <p>Name: ${user.name}</p> 
+            <p>Grade Level: ${user.level}</p>
+            <p>LRN No: ${user.LRN}</p>
+        `;
+    } else {
+        document.getElementById('profile').innerHTML = '<p>No user data found. Please sign in.</p>';
+        // Optionally, redirect back to sign-in page
+        // window.location.href = 'sign-in.html';
+    
+    
+    }
+};
+</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the website</h1></header>
+        <h2 class="secondbutton"><button onclick="location.href='homepage.html'">Back</button></h2>
+    
+    <div class="navigation-buttons">
+         <button onclick="location.href='home.html'">Home</button>
+         <button onclick="location.href='portal.html'">Portal</button>
+         <button onclick="location.href='profile.html'">Profile</button>
+         <button onclick="location.href='grades.html'">Grades</button>
+    </div>
+
+    <div class="slideshow-container">
+
+  <div class="slide">
+    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1422&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+  </div>
+
+  <div class="slide">
+    <img src="https://images.unsplash.com/photo-1517673132405-a56a62b18caf?q=80&w=876&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+  </div>
+
+  <div class="slide">
+    <img src="https://images.unsplash.com/photo-1485322551133-3a4c27a9d925?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+  </div>
+
+  <div class="slide">
+    <img src="https://images.unsplash.com/photo-1468273519810-d3fe4c125cdb?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+  </div>
+
+</div>
+
+<!-- Dots -->
+<div class="dot-container">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+  <span class="dot" onclick="currentSlide(4)"></span> 
+</div>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  const slides = document.getElementsByClassName("slide");
+  const dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1;}
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 3000); // Change image every 3 seconds
+}
+
+// Optional: allow clicking dots to jump to specific slide
+function currentSlide(n) {
+  slideIndex = n - 1; // because showSlides() increments first
+  showSpecificSlide();
+}
+
+function showSpecificSlide() {
+  let i;
+  const slides = document.getElementsByClassName("slide");
+  const dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  if (slideIndex >= slides.length) {slideIndex = 0;}
+  slides[slideIndex].style.display = "block";  
+  dots[slideIndex].className += " active";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Result</title>
+<link rel="stylesheet" href="result.css" />
+
+<style>
+
+    button {
+        padding: 5px;
+        margin-left: 30px;
+        margin-right: 0%;
+    }
+    button:hover {
+        background-color: aquamarine;
+        padding: 10px;
+    }
+
+</style>
+</head>
+<body class="lastbody">
+    <button onclick="location.href='home.html'">H <br>
+                                                o <br>
+                                                m <br>
+                                                e</button>
+
+    <div class="average-container">
+        <h1 class="average">Your Average Grade</h1>
+        <p id="result"></p>
+    </div>
+
+    <!-- Container for displaying individual grades -->
+    <div id="gradesContainer"></div>
+
+<script>
+function displayGrades() {
+    const lrn = localStorage.getItem('currentLRN'); // get saved LRN
+    const container = document.getElementById('gradesContainer');
+    const resultPara = document.getElementById('result');
+
+    if (!lrn) {
+        container.textContent = "LRN not found.";
+        resultPara.textContent = "";
+        return;
+    }
+
+    const gradesStr = localStorage.getItem(`grades_${lrn}`); // get grades for LRN
+    if (!gradesStr) {
+        container.textContent = "No grades found for this LRN.";
+        resultPara.textContent = "";
+        return;
+    }
+
+    const grades = JSON.parse(gradesStr);
+    const gradeValues = [
+        grades.english,
+        grades.filipino,
+        grades.science,
+        grades.arpa,
+        grades.mapeh,
+        grades.esp,
+        grades.math,
+        grades.tle
+    ];
+
+    // Calculate average
+    const total = gradeValues.reduce((sum, grade) => sum + grade, 0);
+    const average = (total / gradeValues.length).toFixed(2);
+
+    // Display individual grades
+    container.innerHTML = `
+    <div class="grade-box">
+        <h2>Grades for LRN: ${lrn}</h2>
+        <p>English: ${grades.english}</p>
+        <p>Filipino: ${grades.filipino}</p>
+        <p>Science: ${grades.science}</p>
+        <p>Arpa: ${grades.arpa}</p>
+        <p>Mapeh: ${grades.mapeh}</p>
+        <p>ESP: ${grades.esp}</p>
+        <p>Mathematics: ${grades.math}</p>
+        <p>TLE: ${grades.tle}</p>
+    </div>
+    `;
+
+    // Display the average grade
+    resultPara.textContent = `Your average grade is: ${average} Congrats you passed!`;
+}
+
+// Run this function when the page loads
+window.onload = displayGrades;
+</script>
+
+</body>
+</html>
