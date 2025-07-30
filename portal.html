@@ -6,6 +6,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Student Portal</title>
 <link rel="stylesheet" href="portal.css" />
+
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js"></script>
+
+<script>
+// Firebase configuration (define once)
+const firebaseConfig = {
+  apiKey: "AIzaSyD7Vzfe7viToWId85cLCDL7UR5Wp2saxvo",
+  authDomain: "edu-nonative.firebaseapp.com",
+  projectId: "edu-nonative",
+  storageBucket: "edu-nonative.firebasestorage.app",
+  messagingSenderId: "580157959506",
+  appId: "1:580157959506:web:06b315793da07aa7ddde8b",
+  measurementId: "G-FE3QW8PY8R"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+</script>
+
 <style>
 body {
     display: flex;
@@ -19,17 +40,17 @@ body {
 .portal-container {
     text-align: center;
     padding: 20px;
-    border: 2px;
+    border: 2px solid black; /* added border style */
     border-radius: 10px;
     background-color: white;
-    margin-riht: 30px;
-    
+    margin-right: 30px;
 }
 .port {
     background-color: white;
     color: black;
     margin-right: 30px;
-
+    padding: 10px;
+    cursor: pointer;
 }
 .port:hover {
     padding: 10px;
@@ -38,19 +59,16 @@ body {
 button:hover {
     background-color: aquamarine;
 }
-
 </style>
 </head>
 <body>
-    <button class="port" onclick="location.href='home.html'">H <br>
-            o <br>
-            m <br>
-            e <br></button>
+    <!-- Corrected button syntax -->
+    <button class="port" onclick="location.href='home.html'">H <br> o <br> m <br> e <br></button>
 
     <div class="portal-container">
        <h2>Enter Your LRN to View Grades</h2>
-         <input type="text" id="lrnInput" placeholder="Enter your LRN" /><br>
-            <button onclick="showGrades()">View Grade</button>
+       <input type="text" id="lrnInput" placeholder="Enter your LRN" /><br>
+       <button onclick="showGrades()">View Grade</button>
     </div>
     <div id="resultDisplay" style="margin-top:20px; font-weight:bold;"></div>
 
@@ -66,7 +84,6 @@ function showGrades() {
     // Redirect to result.html
     window.location.href = 'result.html';
 }
-
-    </script>
+</script>
 </body>
 </html>
