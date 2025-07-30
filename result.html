@@ -6,33 +6,54 @@
 <title>Result</title>
 <link rel="stylesheet" href="result.css" />
 
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js"></script>
+
+<script>
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyD7Vzfe7viToWId85cLCDL7UR5Wp2saxvo",
+  authDomain: "edu-nonative.firebaseapp.com",
+  projectId: "edu-nonative",
+  storageBucket: "edu-nonative.firebasestorage.app",
+  messagingSenderId: "580157959506",
+  appId: "1:580157959506:web:06b315793da07aa7ddde8b",
+  measurementId: "G-FE3QW8PY8R"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+</script>
+
 <style>
-
-    button {
-        padding: 5px;
-        margin-left: 30px;
-        margin-right: 0%;
-    }
-    button:hover {
-        background-color: aquamarine;
-        padding: 10px;
-    }
-
+button {
+    padding: 5px;
+    margin-left: 30px;
+    margin-right: 0%;
+}
+button:hover {
+    background-color: aquamarine;
+    padding: 10px;
+}
 </style>
 </head>
 <body class="lastbody">
-    <button onclick="location.href='home.html'">H <br>
-                                                o <br>
-                                                m <br>
-                                                e</button>
 
-    <div class="average-container">
-        <h1 class="average">Your Average Grade</h1>
-        <p id="result"></p>
-    </div>
+<!-- Corrected button structure -->
+<button onclick="location.href='home.html'">H</button>
+<br>
+<span>o</span><br>
+<span>m</span><br>
+<span>e</span>
 
-    <!-- Container for displaying individual grades -->
-    <div id="gradesContainer"></div>
+<div class="average-container">
+    <h1 class="average">Your Average Grade</h1>
+    <p id="result"></p>
+</div>
+
+<!-- Container for displaying individual grades -->
+<div id="gradesContainer"></div>
 
 <script>
 function displayGrades() {
